@@ -15,8 +15,7 @@ stackop n op =
         then error "Stack underflow"
         else op
 
-stackbinop
-  :: (Integer -> Integer -> Integer) -> AsolEvent ()
+stackbinop :: (Integer -> Integer -> Integer) -> AsolEvent ()
 stackbinop op = stackop 2 $ modify (\(x:y:xs) -> op y x : xs)
 
 evaluate :: Instruction -> AsolEvent ()
